@@ -93,7 +93,7 @@ router.put('/:id', auth, async (req, res) => {
       },
       { new: true }
     );
-    req.json(contact);
+    res.json(contact);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -118,7 +118,7 @@ router.delete('/:id', auth, async (req, res) => {
 
     await Contact.findByIdAndRemove(req.params.id);
 
-    req.json({ msg: 'Contact removed' });
+    res.json({ msg: 'Contact removed' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
